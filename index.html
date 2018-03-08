@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>5 x 5 matrix chart Demo</title>
+        <link rel="stylesheet" href="css/chart.css">
+        <link rel="stylesheet" href="css/pepal_performance_icon.css">
+    </head>
+    <body>
+        
+        <div id="chart">
+        </div>
+    </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/jquery.matrixchart.js"></script>
+
+<script type="text/javascript">
+    var randMatrixDatas = [];
+    for (var i = 1; i<=20; i++){
+        var sex = (i%2 == 0) ? "women" : "men";
+        var dataUnit = 
+        {
+            "EmpId": i,
+            "name": "Employee" + i,
+            "image": "https://randomuser.me/api/portraits/"+sex+"/"+i+".jpg",
+            "pocketAxisValue":{"x": 1 + Math.floor(Math.random() * 5), "y":1 + Math.floor(Math.random() * 5)}
+        }
+        randMatrixDatas.push(dataUnit);
+    }
+    $("#chart").matrixchart({
+        height:600,
+        width: 600,
+        noOfxLevels:5,
+        noOfyLevels:5,
+        xlabels: ['Incompetent', 'Novice', 'Competent', 'Advanced', 'Expert'],
+        ylabels: ['Incompetent', 'Novice', 'Competent', 'Advanced', 'Expert'],
+        xAxisName:"Competency",
+        yAxisName:"Performance",
+        matrixDatas : randMatrixDatas
+    });
+</script>
+
+</html>
